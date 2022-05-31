@@ -18,7 +18,7 @@ const newRecord = {
     phone: "+12063997777",
     email: "tom@jones.com",
     notes: "My new record",
-    status: "In progress",
+    status: "Processing",
     image: [
       {
         url: "https://dl.airtable.com/.attachments/23eeb10f0e3a7227cab008cddba6306f/edfe20e5/1620941011345e1655337600vbetatLe-TVOGWtxF-bD72N6gqqe5yjw7clPwwxpqOn8FaA8M?ts=1650072651&userId=usrn5iPjnuISAI40K&cs=1c8866d3deb42add",
@@ -31,7 +31,7 @@ const updatedRecord = {
   fields: {
     first: "Tommy",
     notes: "Updated record",
-    status: "Done",
+    status: "Shipped",
   },
 }
 
