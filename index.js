@@ -1,3 +1,15 @@
+/*
+
+  Airtable CRUD operations. Sample functions for:
+
+  1. Get all records
+  2. Get record by ID
+  3. Create record
+  4. Update record
+  5. Delete record
+  
+*/
+
 require("dotenv").config()
 const apiKey = process.env.AIRTABLE_API_KEY
 const baseId = process.env.AIRTABLE_BASE_ID

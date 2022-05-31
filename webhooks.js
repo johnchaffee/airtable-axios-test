@@ -1,14 +1,20 @@
+/*
+
+  Airtable webhook functions 
+
+  0. Modify the shipping status of a record in the Airtable contacts db.
+  1. Airtable will send a webhook to this function when there is a change to the status field
+  2. Runs getCursor() to get the index of the last change
+  3. Runs getPayload() to fetch the webhook payload.
+  4. Runs getRecordId() to extract the recordId from the insane payload. (There's got to be a better way to do this)
+  5. Do whatever you want with the recordId. I'm using it in the owlibaba-functions to send shipping notifications.
+  
+*/
+
 require("dotenv").config()
 const axios = require("axios").default
 const apiKey = process.env.AIRTABLE_API_KEY
 const baseId = process.env.AIRTABLE_BASE_ID
-
-// These are Airtable webhook functions
-// Airtable will notify when there is a change to a field
-// You then need to get the cursor (index) of the last change
-// Then fetch the webhook payload
-// Then parse the insane payload to get the recordId
-// Then you can do something with that record
 
 let apiUrl = ""
 let config = {}
@@ -70,8 +76,8 @@ async function getPayload() {
   }
 }
 
-function getRecordId() {
-  const recordId = Object.entries(
+async function getRecordId() {
+  const recordId = await Object.entries(
     Object.entries(
       Object.entries(
         Object.entries(
@@ -88,6 +94,8 @@ getCursor().then(() => {
   console.log("GET CURSOR THEN")
   getPayload().then(() => {
     console.log("GET PAYLOAD THEN")
-    getRecordId()
+    getRecordId().then(() => {
+      console.log("GET RECORD ID THEN")
+    })
   })
 })
